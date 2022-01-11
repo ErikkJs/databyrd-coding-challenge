@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# databyrd Coding Challenge 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -12,18 +12,16 @@ You will need to build a simple web app where you will make some calls to a NASA
 
 - Bonus points for best practices, creativity and clean code!
 
-Below is a example, add as much funcionality as you would like.
+## Below is a example, add as much funcionality as you would like.
 
 ![Alt text](public/example.png?raw=true "example")
 
-Relevant Link to documentation: https://api.nasa.gov/
+### Relevant Link to documentation: https://api.nasa.gov/
 
 HTTP Request
 GET https://api.nasa.gov/planetary/apod
 
-concept_tags are now disabled in this service. Also, an optional return parameter copyright is returned if the image is not public domain.
-
-Query Parameters
+## Query Parameters
 
 - date YYYY-MM-DD The date of the APOD image to retrieve
 - start_date YYYY-MM-DD The start of a date range, when requesting date for a range of dates. Cannot be used with date.
