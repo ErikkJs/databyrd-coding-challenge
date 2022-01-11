@@ -7,6 +7,14 @@ This is our coding challenge. It gives us a chance to see your abilities and how
 
 You will need to build a simple web app where you will make some calls to a NASA API and put the data on the screen as you see fit! 
 
+- Use the end point below to query for a nasa image of the day! 
+
+- Take that data and build a front end using any library you want!
+
+- Bonus points for best practices, creativity and clean code!
+
+Below is a example, add as much funcionality as you would like.
+
 Relevant Link to documentation: https://api.nasa.gov/
 
 HTTP Request
@@ -22,8 +30,6 @@ end_date	YYYY-MM-DD	today	The end of the date range, when used with start_date.
 count	int	none	If this is specified then count randomly chosen images will be returned. Cannot be used with date or start_date and end_date.
 thumbs	bool	False	Return the URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
 api_key	string	DEMO_KEY	api.nasa.gov key for expanded usage
-
-
 
 
 To run the challenge:
