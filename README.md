@@ -1,4 +1,4 @@
-# databyrd Coding Challenge 
+# databyrd Coding Challenge
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -39,4 +39,4 @@ To run the challenge:
 
 Once complete, please email us a link to your forked repo with clean, tested code. We will use Chrome to run it.
 
-- databyrd Engineering
+-databyrd Engineering
