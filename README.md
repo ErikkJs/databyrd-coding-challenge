@@ -15,6 +15,8 @@ You will need to build a simple web app where you will make some calls to a NASA
 
 Below is a example, add as much funcionality as you would like.
 
+![Alt text](public/example.png?raw=true "example")
+
 Relevant Link to documentation: https://api.nasa.gov/
 
 HTTP Request
