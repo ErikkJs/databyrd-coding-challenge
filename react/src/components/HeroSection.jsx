@@ -1,7 +1,7 @@
 import React from 'react' 
 
 class HeroSection extends React.Component{
-  render(){
+ render(){
     return(
       <main>
  <section className="py-5 text-center container">

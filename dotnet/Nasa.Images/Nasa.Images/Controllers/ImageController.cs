@@ -26,7 +26,7 @@ namespace Nasa.Images.Controllers
       _logger = logger;
     }
 
-
+    // GET LIST OF IMAGES TO FILL CARDS
     [HttpGet]
     public async Task<ActionResult<ItemsResponse<List<ImageModel>>>> Get()
     {
@@ -36,13 +36,46 @@ namespace Nasa.Images.Controllers
       try
       {
         HttpClient client = new HttpClient();
-        HttpResponseMessage httpResponse = await client.GetAsync("https://api.nasa.gov/planetary/apod?api_key=" + _apiKeys.Nasa + "&count=10");
+        HttpResponseMessage httpResponse = await client.GetAsync("https://api.nasa.gov/planetary/apod?api_key=" + _apiKeys.Nasa + "&count=9");
         httpResponse.EnsureSuccessStatusCode();
         string clientResponse = await httpResponse.Content.ReadAsStringAsync();
 
       
         List<ImageModel> images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ImageModel>>(clientResponse);
         if(images != null)
+        {
+          ItemsResponse<ImageModel> response = new ItemsResponse<ImageModel>();
+          response.Items = images;
+          result = Ok200(response);
+        }
+      }
+      catch (Exception ex)
+      {
+        Logger.LogError(ex.ToString());
+        result = StatusCode(500, new ErrorResponse(ex.Message.ToString()));
+      }
+
+      return result;
+    }
+
+
+    // GET SINGLE IMAGE FOR HERO SECTION
+    [HttpGet("single")]
+    public async Task<ActionResult<ItemsResponse<List<ImageModel>>>> GetSingle()
+    {
+      Console.WriteLine(_apiKeys);
+      ActionResult result = null;
+
+      try
+      {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage httpResponse = await client.GetAsync("https://api.nasa.gov/planetary/apod?api_key=" + _apiKeys.Nasa + "&count=1");
+        httpResponse.EnsureSuccessStatusCode();
+        string clientResponse = await httpResponse.Content.ReadAsStringAsync();
+
+
+        List<ImageModel> images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ImageModel>>(clientResponse);
+        if (images != null)
         {
           ItemsResponse<ImageModel> response = new ItemsResponse<ImageModel>();
           response.Items = images;

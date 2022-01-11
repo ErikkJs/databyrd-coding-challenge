@@ -20,4 +20,20 @@ const initialApodCall = () => {
     .catch(helpers.onGlobalError);
 };
 
-export { initialApodCall };
+const singleImageCall = () => {
+  const config = {
+    method: "GET",
+    url: `${baseUrl}/single`,
+    crossdomain: true,
+    xhrFields: {
+      withCredentials: true
+  },
+    headers: { "Content-Type": "application/json" },
+  };
+
+  return axios(config)
+    .then(helpers.onGlobalSuccess)
+    .catch(helpers.onGlobalError);
+};
+
+export { initialApodCall, singleImageCall };
