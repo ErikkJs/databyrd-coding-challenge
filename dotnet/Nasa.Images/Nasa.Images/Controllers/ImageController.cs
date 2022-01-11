@@ -91,5 +91,98 @@ namespace Nasa.Images.Controllers
       return result;
     }
 
+    [HttpGet("quantity/{qty:int}")]
+    public async Task<ActionResult<ItemsResponse<List<ImageModel>>>> GetQuantity(int qty)
+    {
+      Console.WriteLine(_apiKeys);
+      ActionResult result = null;
+
+      try
+      {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage httpResponse = await client.GetAsync("https://api.nasa.gov/planetary/apod?api_key=" + _apiKeys.Nasa + "&count=" + qty);
+        httpResponse.EnsureSuccessStatusCode();
+        string clientResponse = await httpResponse.Content.ReadAsStringAsync();
+
+
+        List<ImageModel> images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ImageModel>>(clientResponse);
+        if (images != null)
+        {
+          ItemsResponse<ImageModel> response = new ItemsResponse<ImageModel>();
+          response.Items = images;
+          result = Ok200(response);
+        }
+      }
+      catch (Exception ex)
+      {
+        Logger.LogError(ex.ToString());
+        result = StatusCode(500, new ErrorResponse(ex.Message.ToString()));
+      }
+
+      return result;
+    }
+
+    [HttpGet("startdate")]
+    public async Task<ActionResult<ItemsResponse<List<ImageModel>>>> GetSingleDate(string date)
+    {
+      Console.WriteLine(_apiKeys);
+      ActionResult result = null;
+
+      try
+      {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage httpResponse = await client.GetAsync("https://api.nasa.gov/planetary/apod?api_key=" + _apiKeys.Nasa + "&start_date=" + date);
+        httpResponse.EnsureSuccessStatusCode();
+        string clientResponse = await httpResponse.Content.ReadAsStringAsync();
+
+
+        List<ImageModel> images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ImageModel>>(clientResponse);
+        if (images != null)
+        {
+          ItemsResponse<ImageModel> response = new ItemsResponse<ImageModel>();
+          response.Items = images;
+          result = Ok200(response);
+        }
+      }
+      catch (Exception ex)
+      {
+        Logger.LogError(ex.ToString());
+        result = StatusCode(500, new ErrorResponse(ex.Message.ToString()));
+      }
+
+      return result;
+    }
+
+    [HttpGet("daterange")]
+    public async Task<ActionResult<ItemsResponse<List<ImageModel>>>> GetDateRange(string startDate, string endDate)
+    {
+      Console.WriteLine(_apiKeys);
+      ActionResult result = null;
+
+      try
+      {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage httpResponse = await client.GetAsync("https://api.nasa.gov/planetary/apod?api_key=" + _apiKeys.Nasa + "&start_date=" + startDate + "&end_date=" + endDate);
+        httpResponse.EnsureSuccessStatusCode();
+        string clientResponse = await httpResponse.Content.ReadAsStringAsync();
+
+
+        List<ImageModel> images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ImageModel>>(clientResponse);
+        if (images != null)
+        {
+          ItemsResponse<ImageModel> response = new ItemsResponse<ImageModel>();
+          response.Items = images;
+          result = Ok200(response);
+        }
+      }
+      catch (Exception ex)
+      {
+        Logger.LogError(ex.ToString());
+        result = StatusCode(500, new ErrorResponse(ex.Message.ToString()));
+      }
+
+      return result;
+    }
+
   }
 }

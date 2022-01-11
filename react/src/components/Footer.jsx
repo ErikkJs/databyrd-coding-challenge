@@ -1,42 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-class Footer extends React.Component{
-  render(){
-    return(
-      <div className="container">
-  <footer className="py-3 my-4">
-    <ul className="nav justify-content-center border-bottom pb-3 mb-3">
-      <li className="nav-item">
-        <a href="#" className="nav-link px-2 text-muted">
-          Home
-        </a>
-      </li>
-      <li className="nav-item">
-        <a href="#" className="nav-link px-2 text-muted">
-          Features
-        </a>
-      </li>
-      <li className="nav-item">
-        <a href="#" className="nav-link px-2 text-muted">
-          Pricing
-        </a>
-      </li>
-      <li className="nav-item">
-        <a href="#" className="nav-link px-2 text-muted">
-          FAQs
-        </a>
-      </li>
-      <li className="nav-item">
-        <a href="#" className="nav-link px-2 text-muted">
-          About
-        </a>
-      </li>
-    </ul>
-    <p className="text-center text-muted">© 2021 Company, Inc</p>
-  </footer>
-</div>
-    )
-  }
+function Footer() {
+  return (
+    <div className="container">
+      <footer className="py-3 my-4">
+
+        <p className=" text-center text-muted">
+          © 2021
+          <a href="https://vincent-vitale.netlify.app/" target="_blank" className="nav-link" rel="noopener noreferrer">
+            Vincent Vitale
+          </a>
+        </p>
+      </footer>
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;
